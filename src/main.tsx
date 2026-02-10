@@ -21,6 +21,12 @@ import NotFound from "./pages/NotFound/NotFound";
 import Singup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 
+const savedPath = localStorage.getItem('refreshPath');
+if (savedPath && savedPath !== '/') {
+  localStorage.removeItem('refreshPath');
+  window.history.replaceState({}, '', savedPath);
+}
+
 const router = createBrowserRouter([
   {
     path: "/",

@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-        window.location.href = '/index.html';
+        const currentPath = window.location.pathname + window.location.search;
+        localStorage.setItem('refreshPath', currentPath);
+        window.location.href = '/';
     </script>
 </head>
 <body>
-    <p>Redirecting to homepage...</p>
+    Redirecting...
 </body>
 </html>
