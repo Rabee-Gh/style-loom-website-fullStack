@@ -1,0 +1,444 @@
+@import "tailwindcss";
+@import "@fontsource/roboto/100.css";
+@import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto/900.css";
+@import "@fontsource/roboto-mono/100.css";
+@import "@fontsource/roboto-mono/300.css";
+@import "@fontsource/roboto-mono/400.css";
+@import "@fontsource/roboto-mono/500.css";
+@import "@fontsource/roboto-mono/700.css";
+
+@layer base {
+  body {
+    background-color: var(--color-primary-bg);
+    color: var(--color-dark-12);
+    font-family: var(--font-roboto);
+    -webkit-font-smoothing: antialiased;
+    ::selection {
+      background-color: var(--color-brown-60);
+      color: var(--color-primary-bg);
+    }
+  }
+}
+.dark body {
+  background-color: var(--color-dark-10);
+  color: #ffffff;
+  ::selection {
+    background-color: var(--color-primary-bg);
+    color: var(--color-brown-60);
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  /* FONTS */
+  --font-roboto: "Roboto", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+
+  /* DARK BG-TEXT */
+  --color-dark-primary-bg: #0f0f0f;
+  --color-dark-primary-text: #ffffff;
+  --color-dark-accent: #fff6ec;
+
+  /* LIGHT BG-TEXT */
+  --color-primary-bg: #efefef;
+  --color-primary-text: var(--color-dark-primary-text);
+  --color-light-accent: #fff6ec;
+
+  --color-secondary: #ff5722;
+
+  --scroll-bar: #ae9b8460;
+
+  /* DARK DEGREES */
+  --color-dark-10: #0f0f0f;
+  /* -- BORDER LIGHT */
+  --color-dark-12: #1f1f1f;
+  /* -- BORDER DARK */
+  --color-dark-15: #262626;
+  --color-dark-20: #333333;
+  --color-dark-30: #4d4d4d;
+
+  --color-gray-40: #676665;
+  --color-gray-50: #81807e;
+  --color-gray-70: #b3b3b2;
+  --color-gray-80: #cccccc;
+  --color-very-dark-gray: #404040;
+
+  --color-brown-40: #53432f;
+  --color-brown-50: #796349;
+  --color-brown-60: #ae9b84;
+  --color-brown-70: #c2b4a3;
+  --color-brown-80: #d6cdc2;
+  --color-brown-90: #f0e9e1;
+  --color-brown-100: #fff6ec;
+
+  --color-green: #8af265;
+  --color-green-dark: #152011;
+
+  --breakpoint-my-media: 1430px;
+}
+
+@layer utilities {
+  .font-roboto {
+    font-family: var(--font-roboto);
+  }
+  .font-robotmono {
+    font-family: var(--font-mono);
+  }
+
+  /* CUSTOM DASHED BORDER */
+  .custom-dashed {
+    border: 2px solid transparent;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23262626' stroke-width='3' stroke-dasharray='12,8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-origin: border-box;
+  }
+
+  .dark .custom-dashed {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='3' stroke-dasharray='12,8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  }
+
+  /* DIRECTIONAL CUSTOM DASHED BORDERS - ADVANCED GRADIENT */
+  .custom-dashed-t,
+  .custom-dashed-r,
+  .custom-dashed-b,
+  .custom-dashed-l,
+  .trends-grid > div,
+  .testimonials-grid > div,
+  .products-grid > div,
+  .contact-info-grid > div,
+  .faq-grid > div,
+  .hero-main-grid > div,
+  .hero-numbers-grid > div,
+  .fashion-grid > div,
+  .policy-grid > div {
+    --dash-color: #262626;
+    --dash-segment: 12px;
+    --gap-segment: 20px; /* 12px dash + 8px gap */
+
+    --dash-pattern-h: repeating-linear-gradient(
+      to right,
+      var(--dash-color) 0,
+      var(--dash-color) var(--dash-segment),
+      transparent var(--dash-segment),
+      transparent var(--gap-segment)
+    );
+    --dash-pattern-v: repeating-linear-gradient(
+      to bottom,
+      var(--dash-color) 0,
+      var(--dash-color) var(--dash-segment),
+      transparent var(--dash-segment),
+      transparent var(--gap-segment)
+    );
+
+    background-image:
+      var(--bg-t, none), var(--bg-r, none), var(--bg-b, none), var(--bg-l, none);
+    background-position:
+      top left,
+      top right,
+      bottom left,
+      top left;
+    background-repeat: no-repeat;
+    background-size:
+      100% 2px,
+      2px 100%,
+      100% 2px,
+      2px 100%;
+  }
+
+  .dark .custom-dashed-t,
+  .dark .custom-dashed-r,
+  .dark .custom-dashed-b,
+  .dark .custom-dashed-l,
+  .dark .trends-grid > div,
+  .dark .testimonials-grid > div,
+  .dark .products-grid > div,
+  .dark .contact-info-grid > div,
+  .dark .faq-grid > div,
+  .dark .hero-main-grid > div,
+  .dark .hero-numbers-grid > div,
+  .dark .fashion-grid > div,
+  .dark .policy-grid > div {
+    --dash-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .custom-dashed-t {
+    --bg-t: var(--dash-pattern-h);
+    border-top: none !important;
+  }
+  .custom-dashed-r {
+    --bg-r: var(--dash-pattern-v);
+    border-right: none !important;
+  }
+  .custom-dashed-b {
+    --bg-b: var(--dash-pattern-h);
+    border-bottom: none !important;
+  }
+  .custom-dashed-l {
+    --bg-l: var(--dash-pattern-v);
+    border-left: none !important;
+  }
+
+  /* UTILITIES TO REMOVE BORDERS RESPONSIVELY */
+  .custom-dashed-t-0 {
+    --bg-t: none !important;
+  }
+  .custom-dashed-r-0 {
+    --bg-r: none !important;
+  }
+  .custom-dashed-b-0 {
+    --bg-b: none !important;
+  }
+  .custom-dashed-l-0 {
+    --bg-l: none !important;
+  }
+
+  /* REMOVED OLD PSEUDO-ELEMENT BORDERS */
+
+  /* SHARED RESPONSIVE GRID BORDERS */
+  .trends-grid > div,
+  .testimonials-grid > div,
+  .products-grid > div,
+  .contact-info-grid > div,
+  .faq-grid > div,
+  .fashion-grid > div,
+  .hero-main-grid > div,
+  .hero-numbers-grid > div,
+  .policy-grid > div {
+    --bg-r: var(--dash-pattern-v);
+    --bg-b: var(--dash-pattern-h);
+    height: 100%; /* Ensure borders stretch to full height */
+  }
+
+  /* Mobile: 1 col - No Right Border, Bottom Border except last */
+  @media (max-width: 639px) {
+    .trends-grid > div,
+    .testimonials-grid > div,
+    .products-grid > div,
+    .contact-info-grid > div,
+    .faq-grid > div,
+    .fashion-grid > div,
+    .hero-main-grid > div,
+    .policy-grid > div {
+      --bg-r: none !important;
+    }
+    /* hero-numbers-grid is 2-col even on mobile */
+    .hero-numbers-grid > div:nth-child(2n) {
+      --bg-r: none !important;
+    }
+    .hero-numbers-grid > div:nth-last-child(-n + 2) {
+      --bg-b: none !important;
+    }
+
+    .trends-grid > div:last-child,
+    .testimonials-grid > div:last-child,
+    .products-grid > div:last-child,
+    .contact-info-grid > div:last-child,
+    .faq-grid > div:last-child,
+    .fashion-grid > div:last-child,
+    .hero-main-grid > div:last-child,
+    .policy-grid > div:last-child {
+      --bg-b: none !important;
+    }
+  }
+
+  /* SM: 2 Columns (Tablet View - 640px to 1023px) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .trends-grid > div:nth-child(2n),
+    .testimonials-grid > div:nth-child(2n),
+    .products-grid > div:nth-child(2n),
+    .contact-info-grid > div:nth-child(2n),
+    .faq-grid > div:nth-child(2n),
+    .hero-main-grid > div:nth-child(2n),
+    .hero-numbers-grid > div:nth-child(2n),
+    .policy-grid > div:nth-child(2n) {
+      --bg-r: none !important;
+    }
+    .trends-grid > div:nth-last-child(-n + 2),
+    .testimonials-grid > div:nth-last-child(-n + 2),
+    .products-grid > div:nth-last-child(-n + 2),
+    .contact-info-grid > div:nth-last-child(-n + 2),
+    .faq-grid > div:nth-last-child(-n + 2),
+    .hero-main-grid > div:nth-last-child(-n + 2),
+    .hero-numbers-grid > div:nth-last-child(-n + 2),
+    .policy-grid > div:nth-last-child(-n + 2) {
+      --bg-b: none !important;
+    }
+  }
+
+  /* ALWAYS 2-COLUMNS (Hero & FAQ stay 2-cols on Desktop) */
+  @media (min-width: 1024px) {
+    .faq-grid > div:nth-child(2n),
+    .hero-main-grid > div:nth-child(2n),
+    .hero-numbers-grid > div:nth-child(2n) {
+      --bg-r: none !important;
+    }
+    .faq-grid > div:nth-last-child(-n + 2),
+    .hero-main-grid > div:nth-last-child(-n + 2),
+    .hero-numbers-grid > div:nth-last-child(-n + 2) {
+      --bg-b: none !important;
+    }
+  }
+
+  /* LG: 3 Columns */
+  @media (min-width: 1024px) {
+    .trends-grid > div:nth-child(3n),
+    .testimonials-grid > div:nth-child(3n),
+    .products-grid > div:nth-child(3n),
+    .contact-info-grid > div:nth-child(3n),
+    .policy-grid > div:nth-child(3n) {
+      --bg-r: none !important;
+    }
+    .trends-grid > div:nth-last-child(-n + 3),
+    .testimonials-grid > div:nth-last-child(-n + 3),
+    .products-grid > div:nth-last-child(-n + 3),
+    .contact-info-grid > div:nth-last-child(-n + 3),
+    .policy-grid > div:nth-last-child(-n + 3) {
+      --bg-b: none !important;
+    }
+  }
+
+  /* FASHION JOURNEY GRID (4 Columns) OVERRIDES */
+  @media (min-width: 640px) {
+    .fashion-grid > div {
+      --bg-b: none !important; /* SINGLE ROW HAS NO BOTTOM BORDERS ON SM+ */
+    }
+    .fashion-grid > div:nth-child(4n) {
+      --bg-r: none !important; /* NO RIGHT BORDER ON LAST COLUMN */
+    }
+  }
+
+  /* FAQ GRID (2 Columns) */
+  .faq-grid > div {
+    /* MOBILE: 1 COL - NO RIGHT BORDER, BOTTOM BORDER FOR ALL EXCEPT LAST */
+    --bg-r: none !important;
+    --bg-b: var(--dash-pattern-h);
+  }
+  .faq-grid > div:last-child {
+    --bg-b: none !important;
+  }
+
+  @media (min-width: 640px) {
+    .faq-grid > div {
+      --bg-r: var(--dash-pattern-v) !important;
+      --bg-b: var(--dash-pattern-h) !important;
+    }
+    /* 2 COLUMNS LAYOUT: SECOND COLUMN ITEMS (even) HAVE NO RIGHT BORDER */
+    .faq-grid > div:nth-child(2n) {
+      --bg-r: none !important;
+    }
+    /* HIDE BORDER FOR LAST ROW (maximum 2 items) */
+    .faq-grid > div:nth-last-child(-n + 2) {
+      --bg-b: none !important;
+    }
+  }
+
+  /* START - for CategoriesBarSection */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .testimonial-grid-item:not(:nth-child(2n))::after {
+      display: block;
+    }
+    .testimonial-grid-item:nth-child(3n)::after {
+      display: none;
+    }
+    .testimonial-grid-item:not(:nth-last-child(-n + 2))::before {
+      display: block;
+    }
+    .testimonial-grid-item:nth-last-child(-n + 3)::before {
+      display: none;
+    }
+  }
+
+  /* MOBILE: 1 COLUMN */
+  @media (max-width: 639px) {
+    .testimonial-grid-item::after {
+      display: none !important;
+    }
+    .testimonial-grid-item:not(:last-child)::before {
+      display: block;
+    }
+  }
+
+  /* START - for CategoriesBarSection */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation-name: scroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  /* end - for CategoriesBarSection */
+
+  /* SCROLL AREA */
+  .scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-bar) transparent;
+  }
+  .scroll-area::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scroll-area::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar);
+    border-radius: 999px;
+  }
+
+  /* =========================================
+      START  AUTOFILL FIX – LIGHT & DARK MODE
+========================================= */
+
+  /* (Light Mode) */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+
+    -webkit-text-fill-color: #000 !important;
+    caret-color: #000 !important;
+
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  /* Dark Mode (class="dark") */
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active,
+  .dark textarea:-webkit-autofill,
+  .dark select:-webkit-autofill {
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff !important;
+  }
+  /* =========================================
+      END AUTOFILL FIX – LIGHT & DARK MODE
+========================================= */
+}
